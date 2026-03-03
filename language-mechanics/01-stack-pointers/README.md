@@ -46,7 +46,7 @@ When your Go program starts up, the runtime creates the main goroutine to start 
 
 The stack is important because it provides the physical memory space for the frame boundaries that are given to each individual function. By the time the main goroutine is executing the main function in Listing 1, the goroutine’s stack (at a very high level) would look like this:
 
-pic
+<img width="420" height="338" alt="stack_memory" src="https://github.com/user-attachments/assets/a0bace92-5d59-4f5b-a7c9-df481ae45d9d" />
 
 You can see in Figure 1, a section of the stack has been “framed” out for the main function. This section is called a “stack frame” and it’s this frame that denotes the main function’s boundary on the stack. The frame is established as part of the code that is executed when the function is called. You can also see the memory for the count variable has been placed at address 0x10429fa4 inside the frame for main.
 
@@ -86,7 +86,7 @@ If you look at the function call to increment again, you can see the code is pas
 
 Just before the code inside the increment function starts executing, the goroutine’s stack (at a very high level) would look like this:
 
-pic
+<img width="437" height="454" alt="stack_frame_1" src="https://github.com/user-attachments/assets/6c66115f-829c-45ea-b694-ff4a29b5be53" />
 
 You can see the stack now has two frames, one for main and below that, one for increment. Inside the frame for increment, you see the inc variable and it contains the value of 10 that was copied and passed during the function call. The address of the inc variable is 0x10429f98 and is lower in memory because frames are taken down the stack, which is just an implementation detail that doesn’t mean anything. What’s important is that the goroutine took the value of count from within the frame for main and placed a copy of that value within the frame for increment using the inc variable.
 
@@ -107,7 +107,7 @@ inc:    Value Of[ 11  ]  Addr Of[ 0x10429f98  ]
 
 This is what the stack looks like after the execution of those same lines of code:
 
-pic
+<img width="437" height="455" alt="stack_frame_2" src="https://github.com/user-attachments/assets/fc30b9d1-9b40-4240-a71f-ec2b298cd869" />
 
 After lines 21 and 22 are executed, the increment function returns and control goes back to the main function. Then the main function displays the “value of” and “address of” the local count variable again on.
 
@@ -130,7 +130,7 @@ The value of count in the frame for main is the same before and after the call t
 # Function Returns
 What actually happens to the memory on the stack when a function returns and control goes back up to the calling function? The short answer is nothing. This is what the stack looks like after the return of the increment function:
 
-pic
+<img width="440" height="451" alt="stack_frame_3" src="https://github.com/user-attachments/assets/7977ffd1-7ed0-4e56-830f-44fcdfc79bb9" />
 
 The stack looks exactly the same as Figure 3 except the frame associated with the increment function is now considered to be invalid memory. This is because the frame for main is now the active frame. The memory that was framed for the increment function is left untouched.
 
@@ -199,7 +199,7 @@ If you were passing the address of a User value, then the variable would have ne
 
 This is what the stack looks like after the function call to increment:
 
-pic
+<img width="511" height="454" alt="stack_pointer_4" src="https://github.com/user-attachments/assets/fb40c0d0-beed-42d2-b3e6-66db6cc82914" />
 
 You can see in above figure what the stack looks like when a “pass by value” is performed using an address as the value. The pointer variable inside the frame for the increment function is now pointing to the count variable, which is located inside the frame for main.
 
@@ -215,6 +215,8 @@ This time the * character is acting as an operator and being applied against the
 Now in figure 6 you see what the stack looks like after the execution of line 21.
 
 Figure 6
+<img width="511" height="453" alt="stack_pointer_5" src="https://github.com/user-attachments/assets/a99e5925-fc66-4e5a-9589-43a58b4c8d7f" />
+
 
 Here is the final output of this program:
 
