@@ -125,7 +125,7 @@ I said the function is using pointer semantics on the return because the user va
 
 You can see the same struct literal being used on lines 28 through 31 to construct a user value, but on line 34 the return is different. Instead of passing a copy of the user value back up the call stack, a copy of the address for the user value is passed up. Based on this, you might think that the stack looks like this after the call.
 
-pic
+<img width="514" height="451" alt="heap_2" src="https://github.com/user-attachments/assets/4ca2c7e7-e5ca-47d2-83f4-2844c79ef04b" />
 
 If what you see in Figure 2 was really happening, you would have an integrity issue. **The pointer is pointing down the call stack into memory that is no longer valid**. On the next function call by main, that memory being pointed to is going to be re-framed and re-initialized.
 
