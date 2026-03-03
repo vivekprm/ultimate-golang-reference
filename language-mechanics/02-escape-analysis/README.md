@@ -153,7 +153,7 @@ The syntax is hiding what is really happening in this code. The variable u decla
 
 You could visualize the stack looking like this after the function call.
 
-pic
+<img width="646" height="450" alt="heap_3" src="https://github.com/user-attachments/assets/d0933618-210d-4af0-9851-79ebae286b3d" />
 
 The u variable on the stack frame for **createUserV2**, represents a value that is on the heap, not the stack. This means using u to access the value, requires pointer access and not the direct access the syntax is suggesting. You might think, why not make u a pointer then, since access to the value it represents requires the use of a pointer anyway?
 
