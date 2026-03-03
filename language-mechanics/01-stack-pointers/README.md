@@ -50,7 +50,7 @@ The stack is important because it provides the physical memory space for the fra
 
 You can see in Figure 1, a section of the stack has been “framed” out for the main function. This section is called a “stack frame” and it’s this frame that denotes the main function’s boundary on the stack. The frame is established as part of the code that is executed when the function is called. You can also see the memory for the count variable has been placed at address 0x10429fa4 inside the frame for main.
 
-There is another interesting point made clear by Figure 1. All stack memory below the active frame is invalid but memory from the active frame and above is valid. I need to be clear about the boundary between the valid and invalid parts of the stack.
+There is another interesting point made clear by Figure 1. **All stack memory below the active frame is invalid but memory from the active frame and above is valid**. I need to be clear about the boundary between the valid and invalid parts of the stack.
 
 # Addresses
 Variables serve the purpose of assigning a name to a specific memory location for better code readability and to help you reason about the data you are working with. If you have a variable then you have a value in memory, and if you have a value in memory then it must have an address. On line 09, the main function calls the built-in function println to display the “value of” and “address of” the count variable.
