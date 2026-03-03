@@ -86,7 +86,14 @@ If you look at the function call to increment again, you can see the code is pas
 
 Just before the code inside the increment function starts executing, the goroutine’s stack (at a very high level) would look like this:
 
+<<<<<<< HEAD
 <img width="437" height="454" alt="stack_frame_1" src="https://github.com/user-attachments/assets/6c66115f-829c-45ea-b694-ff4a29b5be53" />
+=======
+
+<img width="420" height="338" alt="stack_frame_1" src="https://github.com/user-attachments/assets/9d18abaa-d4df-43ca-8def-4e4ebcaacf28" />
+
+<!--img width="514" height="451" alt="heap_frame_2" src="https://github.com/user-attachments/assets/e6f304e7-2cfb-4dee-bfb0-a9c598aabdbf" /-->
+>>>>>>> f834813 (Update README.md)
 
 You can see the stack now has two frames, one for main and below that, one for increment. Inside the frame for increment, you see the inc variable and it contains the value of 10 that was copied and passed during the function call. The address of the inc variable is 0x10429f98 and is lower in memory because frames are taken down the stack, which is just an implementation detail that doesn’t mean anything. What’s important is that the goroutine took the value of count from within the frame for main and placed a copy of that value within the frame for increment using the inc variable.
 
