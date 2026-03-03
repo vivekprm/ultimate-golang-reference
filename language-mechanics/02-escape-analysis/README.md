@@ -103,12 +103,13 @@ I said the function is using value semantics on the return because the user valu
 
 You can see the construction of a user value being performed. Then, a copy of the user value is passed up the call stack and back to the caller. After the function returns, the stack looks like this.
 
-pic
+<img width="467" height="452" alt="heap_1" src="https://github.com/user-attachments/assets/fa3723a0-7a5c-4bcc-aef9-6c5e0412a1fe" />
 
 You can see in Figure 1, a user value exists in both frames after the call to **createUserV1**. In Version 2 of the function, pointer semantics are being used on the return.
 
 ## Listing 3
 ```go
+
 27 func createUserV2() *user {
 28     u := user{
 29         name:  "Bill",
